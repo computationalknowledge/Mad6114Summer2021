@@ -1,37 +1,45 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {Constraints} from 'expo';
+import { StatusBar, View, TextInput } from 'react-native';
+import { LinearGradient } from 'expo';
 
-import AssetExample from './components/AssetExample';
-import { Card } from 'react-native-paper';
+export default class App extends React.Component {
+  state = {
+    inputValue: ''
+  };
 
-export default class App extends React.Component{
-	render(){
-		return (
-				<View style={styles.container}>
-					<Text style={styles.paragraph}>
-					My Message!
-					</Text>
-					<Card>
-						<AssetExample />
-					</Card>
-				</View>	
-			);
-	}
+  render() {
+    return (
+        <LinearGradient colors={['#667eea', '#764ba2']} style={{ flex:1 }}>
+          <StatusBar barStyle="light-content" />
+          <View>
+            <TextInput
+    style={styles.input}
+    placeholder="Type here to add a to do."
+    placeholderTextColor={'#fff'}
+    multiline={true}
+    autoCapitalize="sentences"
+    underlineColorAndroid="transparent"
+    selectionColor={'white'}
+    maxLength={30}
+    returnKeyType="done"
+    autoCorrect={false}
+    blurOnSubmit={true}
+  />
+          </View>
+        </LinearGradient>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1, 
-		justifyContent: 'center',
-		paddingTop: Constraints.statusBarHeight,
-		backgroundColor: '#ecf0f1',
-		padding: 8,
-	},
-	paragraph: {
-		margin: 24,
-		fontSize: 18,
-		fontWeight: 'bold',
-		textAlign: 'center',
-	},
-})
+const styles = {
+  input:
+    {
+      marginTop: 30,
+    paddingTop: 10,
+    paddingRight: 15,
+    paddingLeft: 15,
+    fontSize: 34,
+    color: 'white',
+    fontWeight: '500'
+  }
+}
